@@ -1,5 +1,5 @@
 package com.odh.todo.beans;
 
-public class memberDAO {
-
+public interface memberDAO {
+	public memberDTO selectById(String id);
 }
