@@ -34,7 +34,7 @@
 					<li class="nav-item"><a class="nav-link" href="">ToDo</a></li>
 					<li class="nav-item"><a class="nav-link" href="">Act</a></li>
 					<li class="nav-item"><a class="nav-link" href="">All</a></li>
-					<li class="nav-item"><a class="nav-link" href="">Login</a></li>
+					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a></li>
 					</li>
 				</ul>
 			</div>

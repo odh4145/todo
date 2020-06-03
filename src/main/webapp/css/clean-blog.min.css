@@ -8,7 +8,7 @@
 body {
 	font-size: 20px;
 	color: #212529;
-	font-family: 'Noto Sans KR', Lora, 'Times New Roman', serif;
+	font-family:'Noto Sans KR', Lora, 'Times New Roman', serif;
 }
 
 p {
@@ -304,13 +304,13 @@ header.masthead .post-heading .meta a {
 .floating-label-form-group {
 	font-size: 14px;
 	position: relative;
-	margin-bottom: 0;
-	padding-bottom: .5em;
+	margin:5px 0;
+	padding-bottom:0;
 	border-bottom: 1px solid #dee2e6
 }
 
 .floating-label-form-group input, .floating-label-form-group textarea {
-	font-size: 1.5em;
+	font-size: 1em;
 	position: relative;
 	z-index: 1;
 	padding: 0;
@@ -398,4 +398,30 @@ footer .copyright {
 .btn-lg {
 	font-size: 16px;
 	padding: 25px 35px
+}
+
+
+
+/* 내가작성한코드 */
+.l_title{
+	color:#888;
+	font-size:1.2em;
+	font-weight:600;
+}
+.login{
+	width:105px;
+	margin:0 auto;
+}
+
+.join{
+	font-weight: 600;
+	text-align: center;
+	margin-top:30px;
+	font-size: 0.7em;
+}
+.join a{
+	color:#888;
+}
+.join a:hover{
+	color:#00657b;
 }
