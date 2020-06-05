@@ -38,13 +38,13 @@
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
-					<a class="nav-link" href="${pageContext.request.contextPath}/todo?mid=<%=mid%>">ToDo</a>
+					<a class="nav-link" href="${pageContext.request.contextPath}/list/mid=<%=mid%>">ToDo</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="${pageContext.request.contextPath}/act?mid=<%=mid%>">Act</a>
+					<a class="nav-link" href="${pageContext.request.contextPath}/act/mid=<%=mid%>">Act</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="${pageContext.request.contextPath}/all?mid=<%=mid%>">All</a>
+					<a class="nav-link" href="${pageContext.request.contextPath}/all/mid=<%=mid%>">All</a>
 				</li>
 			<%
 				if(mid == 0){

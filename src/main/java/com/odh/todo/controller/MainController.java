@@ -74,8 +74,12 @@ public class MainController {
 	
 	@RequestMapping(value="/list/{mid}")
 	public String todo(Model model, @PathVariable("mid")int mid) {	
-		model.addAttribute("mid", mid); 
-		new TodoCommand().execute(model);
-		return "todo";
+		if(mid == 0) {
+			return "member/loginCheck";
+		} else {
+			model.addAttribute("mid", mid); 
+			new TodoCommand().execute(model);
+			return "todo";
+		}	
 	}
 }

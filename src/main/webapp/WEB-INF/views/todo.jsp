@@ -29,12 +29,14 @@
 		<div class="col-lg-8 col-md-10 mx-auto">
 		<c:forEach var="dto" items="${list}">
 			<div class="post-preview">
-				<input type="checkbox" value="${list.tid}">
-				<h3 class="post-subtitle">${list.title}</h3>
-				<c:when test="${list.img != null }">
-					<img src="${pageContext.request.contextPath}/img/${list.img}">
+				<input type="checkbox" value="${dto.tid}">
+				<h5 class="post-subtitle mt-2">${dto.title}</h5>
+				<c:choose>
+				<c:when test="${dto.img != null }">
+					<img src="${pageContext.request.contextPath}/img/${dto.img}">
 				</c:when>
-				<p class="post-meta">${list.tdate }</p>
+				</c:choose>
+				<hr>
 			</div>
 		</c:forEach>
 		</div>
