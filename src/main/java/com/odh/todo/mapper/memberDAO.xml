@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.odh.todo.beans.memberDAO">
-	<select id="selectById" resultType="com.ateam.solohomes.beans.LoginDTO">
+	<select id="selectById" resultType="com.odh.todo.beans.memberDTO">
 		SELECT * FROM MEMBER
 		WHERE id = #{id};
 	</select>
+	
+	<select id="checkId" resultType="int">
+		SELECT count(*) FROM MEMBER
+		WHERE id = #{id};
+	</select>
+	
+	<insert id="join" flushCache="true">
+		INSERT INTO MEMBER(id, pw)
+		VALUES (#{id}, #{pw});
+	</insert>
 </mapper>

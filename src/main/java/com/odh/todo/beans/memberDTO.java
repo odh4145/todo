@@ -5,10 +5,7 @@ public class memberDTO {
 	private String id;
 	private String pw;
 		
-	public memberDTO(int mid, String id, String pw) {
-		this.mid = mid;
-		this.id = id;
-		this.pw = pw;
+	public memberDTO() {
 		System.out.println("memberDTO 생성");
 	}
 	

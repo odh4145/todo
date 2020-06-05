@@ -425,3 +425,7 @@ footer .copyright {
 .join a:hover{
 	color:#00657b;
 }
+
+.center{
+	text-align: center;
+}
