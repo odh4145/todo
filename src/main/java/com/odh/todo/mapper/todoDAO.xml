@@ -3,7 +3,29 @@
 <mapper namespace="com.odh.todo.beans.todoDAO">
 	<select id="todoList" resultType="com.odh.todo.beans.todoDTO">
 		SELECT * FROM todo
+		WHERE mid = #{mid} AND act = 0
+		ORDER BY tdate;
+	</select>
+	
+	<select id="actList" resultType="com.odh.todo.beans.todoDTO">
+		SELECT * FROM todo
+		WHERE mid = #{mid} AND act = 1
+		ORDER BY tdate;
+	</select>
+	
+	<select id="allList" resultType="com.odh.todo.beans.todoDTO">
+		SELECT * FROM todo
 		WHERE mid = #{mid}
 		ORDER BY tdate;
 	</select>
+	
+	<update id="todoAct" flushCache="true" parameterType="com.odh.todo.beans.todoDTO">
+		UPDATE todo SET act = 1
+		WHERE mb_uid = #{param1} AND tid = #{param2};
+	</update>
+	
+	<delete id="todoDelete" flushCache="true">
+		DELETE FROM todo
+		WHERE mb_uid = #{param1} AND tid = #{param2};
+	</delete>
 </mapper>

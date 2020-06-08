@@ -3,6 +3,7 @@ package com.odh.todo.beans;
 import java.security.Timestamp;
 
 public class todoDTO {
+	private int mid;
 	private int tid;
 	private String title;
 	private String img;
@@ -13,6 +14,14 @@ public class todoDTO {
 		System.out.println("todoDTO() 생성");
 	}
 	
+	public int getMid() {
+		return mid;
+	}
+
+	public void setMid(int mid) {
+		this.mid = mid;
+	}
+
 	public int getTid() {
 		return tid;
 	}

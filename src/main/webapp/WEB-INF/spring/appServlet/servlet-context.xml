@@ -83,14 +83,16 @@
 		<beans:property name="defaultEncoding" value="utf-8"></beans:property>
 	</beans:bean>
 
-	<!-- Interceptor 등록/설정 
+	<!-- Interceptor 빈 생성 -->
+	<beans:bean name="loginInterceptor"
+		class="com.odh.todo.controller.loginInterceptor"/>
+	<!-- Interceptor 등록/설정 -->
 	<interceptors>
 		<interceptor>
-			<mapping path="/all" />
-			<mapping path="/act" />
-			<mapping path="/todo" />
-			<beans:ref bean="LoginInterceptor" />
+			<mapping path="/list/**"/>
+			<mapping path="/act/**"/>
+			<mapping path="/all/**"/>				
+			<beans:ref bean="loginInterceptor"/>	
 		</interceptor>
 	</interceptors>
-	-->
 </beans:beans>
