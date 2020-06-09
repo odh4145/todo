@@ -28,7 +28,7 @@
 %>
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
 	<div class="container">
-		<a class="navbar-brand" href="index.html">ToDo</a>
+		<a class="navbar-brand" href="${pageContext.request.contextPath}/list/<%=mid%>">ToDo</a>
 		<button class="navbar-toggler navbar-toggler-right" type="button"
 			data-toggle="collapse" data-target="#navbarResponsive"
 			aria-controls="navbarResponsive" aria-expanded="false"
@@ -38,13 +38,13 @@
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
-					<a class="nav-link" href="${pageContext.request.contextPath}/list/mid=<%=mid%>">ToDo</a>
+					<a class="nav-link" href="${pageContext.request.contextPath}/list/<%=mid%>">ToDo</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="${pageContext.request.contextPath}/act/mid=<%=mid%>">Act</a>
+					<a class="nav-link" href="${pageContext.request.contextPath}/act/<%=mid%>">Act</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="${pageContext.request.contextPath}/all/mid=<%=mid%>">All</a>
+					<a class="nav-link" href="${pageContext.request.contextPath}/all/<%=mid%>">All</a>
 				</li>
 			<%
 				if(mid == 0){

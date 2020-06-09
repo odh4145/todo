@@ -9,4 +9,5 @@ public interface todoDAO {
 	
 	public int todoAct(int mid, int tid);
 	public int todoDelete(int mid, int tid);	
+	public int insert(String title, String img, int mid);
 }

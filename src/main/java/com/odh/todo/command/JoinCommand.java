@@ -17,6 +17,4 @@ public class JoinCommand implements Command {
 		memberDAO dao = C.sqlSession.getMapper(memberDAO.class);
 		model.addAttribute("result", dao.join(dto));
 	}
-
-
 }

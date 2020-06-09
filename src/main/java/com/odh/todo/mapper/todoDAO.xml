@@ -21,11 +21,16 @@
 	
 	<update id="todoAct" flushCache="true" parameterType="com.odh.todo.beans.todoDTO">
 		UPDATE todo SET act = 1
-		WHERE mb_uid = #{param1} AND tid = #{param2};
+		WHERE mid = #{param1} AND tid = #{param2};
 	</update>
 	
 	<delete id="todoDelete" flushCache="true">
 		DELETE FROM todo
-		WHERE mb_uid = #{param1} AND tid = #{param2};
+		WHERE mid = #{param1} AND tid = #{param2};
 	</delete>
+	
+	<insert id="insert" flushCache="true">
+		INSERT INTO todo(title, img, mid)
+		VALUES (#{title}, #{img}, #{mid});
+	</insert>
 </mapper>

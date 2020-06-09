@@ -386,7 +386,8 @@ footer .copyright {
 
 .btn-primary {
 	background-color: #0085a1;
-	border-color: #0085a1
+	border-color: #0085a1;
+	display: block;
 }
 
 .btn-primary:active, .btn-primary:focus, .btn-primary:hover {
@@ -428,4 +429,8 @@ footer .copyright {
 
 .center{
 	text-align: center;
+}
+
+#title{
+	width: 100%;
 }

@@ -10,12 +10,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.odh.todo.C;
 import com.odh.todo.beans.memberDTO;
+import com.odh.todo.beans.todoDTO;
 import com.odh.todo.command.Command;
 import com.odh.todo.command.JoinCommand;
 import com.odh.todo.command.TodoCommand;
+import com.odh.todo.command.goActCommand;
+import com.odh.todo.command.insertCommand;
 import com.odh.todo.command.loginCommand;
 
 @Controller
@@ -29,6 +33,7 @@ public class MainController {
 		C.sqlSession = sqlSession;
 	}
 	
+	// 로그인 관련
 	@RequestMapping(value="/login")
 	public String login(Model model) {
 		return "member/login";
@@ -57,6 +62,13 @@ public class MainController {
 		return "member/logout";
 	}
 	
+	@RequestMapping(value="/loginCheck")
+	public String loginCheck() {
+		return "member/loginCheck";
+	}
+	
+	
+	// 회원가입 관련
 	@RequestMapping(value="/join")
 	public String join() {
 		return "member/join";
@@ -72,14 +84,44 @@ public class MainController {
 		return "member/joinOk";
 	}
 	
+	
+	// todo list 목록
 	@RequestMapping(value="/list/{mid}")
 	public String todo(Model model, @PathVariable("mid")int mid) {	
-		if(mid == 0) {
-			return "member/loginCheck";
-		} else {
-			model.addAttribute("mid", mid); 
-			new TodoCommand().execute(model);
-			return "todo";
-		}	
+		model.addAttribute("mid", mid); 
+		new TodoCommand().execute(model);
+		return "todo";
+		
+	}
+	
+	
+	// todo 완료
+	@RequestMapping(value="/goAct/{mid}", method = RequestMethod.GET)
+	public String goAct(Model model, @PathVariable("mid")int mid, HttpServletRequest request) {		
+		String[] tmp = request.getParameterValues("tid");
+		int[] tid = new int[tmp.length];
+		model.addAttribute("mid", mid);
+		
+		for(int i=0; i<tid.length; i++) {
+			tid[i] = Integer.parseInt(tmp[i]);
+			model.addAttribute("tid", tid[i]);
+			new goActCommand().execute(model);
+		}
+		
+		return "goAct";
+	}	
+	
+	@RequestMapping(value = "/insertOk")
+	public String insertOk(Model model, MultipartHttpServletRequest request,
+			String title, String img, int mid) {
+		todoDTO dto = new todoDTO();
+		dto.setTitle(title);
+		dto.setImg(img);
+		dto.setMid(mid);
+		
+		model.addAttribute("request", request);
+		model.addAttribute("dto", dto);
+		new insertCommand().execute(model);
+		return "insertOk";
 	}
 }

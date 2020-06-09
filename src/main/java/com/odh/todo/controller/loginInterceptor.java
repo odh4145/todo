@@ -14,16 +14,16 @@ public class loginInterceptor extends HandlerInterceptorAdapter {
 		System.out.println("preHandle");
 		
 		HttpSession session = request.getSession();
-		String mid = (String) session.getAttribute("mid");
+		String id = (String)session.getAttribute("id");
 		
-		if(mid == null) {
+		if(id == null) {
 			// 로그인이 안되있다는 뜻.
 			
 			String urlCopy =
 					request.getRequestURL().toString() + "?" + request.getQueryString();
 			request.getSession().setAttribute("urlCopy", urlCopy);
 			System.out.println(urlCopy);
-			response.sendRedirect(request.getContextPath() + "/member/loginCheck");
+			response.sendRedirect(request.getContextPath() + "/loginCheck");
 			return false;
 		}
 		
