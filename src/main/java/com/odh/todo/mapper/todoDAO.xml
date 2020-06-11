@@ -4,19 +4,19 @@
 	<select id="todoList" resultType="com.odh.todo.beans.todoDTO">
 		SELECT * FROM todo
 		WHERE mid = #{mid} AND act = 0
-		ORDER BY tdate;
+		ORDER BY tdate desc;
 	</select>
 	
 	<select id="actList" resultType="com.odh.todo.beans.todoDTO">
 		SELECT * FROM todo
 		WHERE mid = #{mid} AND act = 1
-		ORDER BY tdate;
+		ORDER BY tdate desc;
 	</select>
 	
 	<select id="allList" resultType="com.odh.todo.beans.todoDTO">
 		SELECT * FROM todo
 		WHERE mid = #{mid}
-		ORDER BY tdate;
+		ORDER BY tdate desc;
 	</select>
 	
 	<update id="todoAct" flushCache="true" parameterType="com.odh.todo.beans.todoDTO">

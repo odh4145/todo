@@ -63,21 +63,6 @@
 	</div>
 </nav>
 
-<!-- Page Header -->
-<header class="masthead" style="background-image: url('${pageContext.request.contextPath}/img/home-bg.jpg')">
-	<div class="overlay"></div>
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-8 col-md-10 mx-auto">
-				<div class="site-heading">
-					<h1>To Do List</h1>
-					<span class="subheading">Check your list</span>
-				</div>
-			</div>
-		</div>
-	</div>
-</header>
-
 <!-- Bootstrap core JavaScript -->
 <script src="${pageContext.request.contextPath}/vendor/jquery/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

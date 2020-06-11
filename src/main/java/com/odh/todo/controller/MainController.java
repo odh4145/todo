@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.odh.todo.C;
 import com.odh.todo.beans.memberDTO;
@@ -18,7 +17,10 @@ import com.odh.todo.beans.todoDTO;
 import com.odh.todo.command.Command;
 import com.odh.todo.command.JoinCommand;
 import com.odh.todo.command.TodoCommand;
+import com.odh.todo.command.actCommand;
+import com.odh.todo.command.allCommand;
 import com.odh.todo.command.goActCommand;
+import com.odh.todo.command.goDeleteCommand;
 import com.odh.todo.command.insertCommand;
 import com.odh.todo.command.loginCommand;
 
@@ -94,6 +96,24 @@ public class MainController {
 		
 	}
 	
+	// act list 목록
+	@RequestMapping(value="/act/{mid}")
+	public String act(Model model, @PathVariable("mid")int mid) {	
+		model.addAttribute("mid", mid); 
+		new actCommand().execute(model);
+		return "act";
+		
+	}
+	
+	// all list 목록
+	@RequestMapping(value="/all/{mid}")
+	public String all(Model model, @PathVariable("mid")int mid) {	
+		model.addAttribute("mid", mid); 
+		new allCommand().execute(model);
+		return "all";
+		
+	}
+	
 	
 	// todo 완료
 	@RequestMapping(value="/goAct/{mid}", method = RequestMethod.GET)
@@ -111,8 +131,9 @@ public class MainController {
 		return "goAct";
 	}	
 	
+	// todo 삽입
 	@RequestMapping(value = "/insertOk")
-	public String insertOk(Model model, MultipartHttpServletRequest request,
+	public String insertOk(Model model,HttpServletRequest request,
 			String title, String img, int mid) {
 		todoDTO dto = new todoDTO();
 		dto.setTitle(title);
@@ -124,4 +145,20 @@ public class MainController {
 		new insertCommand().execute(model);
 		return "insertOk";
 	}
+	
+	// todo 삭제
+		@RequestMapping(value="/goDelete/{mid}", method = RequestMethod.GET)
+		public String goDelete(Model model, @PathVariable("mid")int mid, HttpServletRequest request) {		
+			String[] tmp = request.getParameterValues("tid");
+			int[] tid = new int[tmp.length];
+			model.addAttribute("mid", mid);
+			
+			for(int i=0; i<tid.length; i++) {
+				tid[i] = Integer.parseInt(tmp[i]);
+				model.addAttribute("tid", tid[i]);
+				new goDeleteCommand().execute(model);
+			}
+			
+			return "goDelete";
+		}
 }

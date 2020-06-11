@@ -46,6 +46,20 @@ function chkSubmit(){
 <%
 	} else {
 %>
+<header class="masthead" style="background-image: url('${pageContext.request.contextPath}/img/home-bg.jpg')">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-md-10 mx-auto">
+				<div class="site-heading">
+					<h1>Login</h1>
+					<span class="subheading">Enter your ID & password</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
 <div class="container mb-4">
 	<div class="row">
 	<div class="col-lg-6 col-md-10 mx-auto">

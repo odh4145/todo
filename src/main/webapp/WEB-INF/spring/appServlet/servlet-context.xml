@@ -82,7 +82,7 @@
 		<beans:property name="maxInMemorySize" value="52428800" />
 		<beans:property name="defaultEncoding" value="utf-8"></beans:property>
 	</beans:bean>
-
+	
 	<!-- Interceptor 빈 생성 -->
 	<beans:bean name="loginInterceptor"
 		class="com.odh.todo.controller.loginInterceptor"/>

@@ -16,7 +16,6 @@
 	}
 %>
 <script>
-$(read)
 function todoInsert() {
 	frm = document.forms["frm"];
 	var title = frm["title"].value.trim();
@@ -32,10 +31,24 @@ function todoInsert() {
 </script>
 </head>
 <body>
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('${pageContext.request.contextPath}/img/home-bg.jpg')">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-md-10 mx-auto">
+				<div class="site-heading">
+					<h1>To Do List</h1>
+					<span class="subheading">Check your todo list</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
 
 <div class="container">
 	<div class="row mb-3">
-		<form name="frm" class="col-lg-8 col-md-10 mx-auto" 
+		<form name="frm" class="col-lg-8 col-md-10 mx-auto" enctype="multipart/form-data"
 			action="${pageContext.request.contextPath}/insertOk" onsubmit="return todoInsert()">
 		<button class="btn btn-primary" type="submit">할 일 추가</button>
 		<input type="hidden" value="<%=mid%>" name="mid" id="nid">
@@ -57,9 +70,9 @@ function todoInsert() {
 				<input name="tid" type="checkbox" value="${dto.tid}">
 				<h5 class="post-subtitle mt-2">${dto.title}</h5>
 				<c:choose>
-				<c:when test="${dto.img != null }">
-					<img src="${pageContext.request.contextPath}/img/${dto.img}">
-				</c:when>
+					<c:when test="${dto.img != null }">
+						<img src="${pageContext.request.contextPath}/img/${dto.img}">
+					</c:when>
 				</c:choose>
 				<hr>
 			</div>

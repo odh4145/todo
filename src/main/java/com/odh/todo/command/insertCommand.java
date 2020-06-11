@@ -1,5 +1,6 @@
 package com.odh.todo.command;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Map;
@@ -18,20 +19,20 @@ public class insertCommand implements Command {
 
 	@Override
 	public void execute(Model model) {
-		MultipartHttpServletRequest request = (MultipartHttpServletRequest) model.getAttribute("request");
-
-		// todoDTO setting
 		Map<String, Object> map = model.asMap();
 		todoDTO dto = (todoDTO) map.get("dto");
 		todoDAO dao = C.sqlSession.getMapper(todoDAO.class);
-		
-		// get request data;
-		MultipartFile img = request.getFile("img");
-		String title = request.getParameter("title");
-		int mid = Integer.parseInt(request.getParameter("mid"));
-		
-		String imgPath = uploadFile(img);		
-		model.addAttribute("result", dao.insert(title, imgPath, mid));
+			
+		try {
+			MultipartHttpServletRequest request = (MultipartHttpServletRequest) model.getAttribute("request");
+			MultipartFile img = request.getFile("img");
+			String imgPath = uploadFile(img);
+			dto.setImg(imgPath);
+			
+		} catch (Exception e) {
+			dto.setImg(null);
+		}	
+		model.addAttribute("result", dao.insert(dto));
 	}
 
 	public String uploadFile(MultipartFile img) {
